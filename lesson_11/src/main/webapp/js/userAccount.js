@@ -17,7 +17,7 @@ $.get("magazines", function(data) {
 					  "<h6 class='card-subtitle mb-2 text-muted second'>" + value.price + "</h6>"+
 					  "<h6 class='card-subtitle mb-2 text-muted third'>" + value.numberOfPages + "</h6>"+
 					  "<p class='card-text'>" + value.description + "</p>"+
-					  "<a href='magazine?id=" + value.id + "' class='card-link'>link</a>"+
+					  "<a class='magazineCardElement' href='magazine?id=" + value.id + "' class='card-link'>link</a>"+
 					  "</div>" +
 					  "</div>" +
 					  "</div>" +
@@ -26,4 +26,14 @@ $.get("magazines", function(data) {
 	
 	  $('#magazineCards').html(cardsContent);
 	
+}).done(function() {
+	$.get("user-role", function(data) {
+		if (data !== '') {
+			userRole = data;
+		}
+	}).done(function() {
+		if(userRole === 'ADMIN'){
+			$('a.magazineCardElement').hide();
+		}
+	});
 });

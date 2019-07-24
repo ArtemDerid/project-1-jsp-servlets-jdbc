@@ -25,6 +25,7 @@ public class SubscriptionController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Integer userId = (Integer)session.getAttribute("userId");
+		
 		Subscription subscription = new Subscription(userId, Integer.parseInt(magazineId), new Date());
 		subscriptionService.create(subscription);
 		
@@ -33,5 +34,16 @@ public class SubscriptionController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write("Success");
 	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String subscriptionId = request.getParameter("subscriptionId");
+		subscriptionService.delete(Integer.parseInt(subscriptionId));
+		
+		response.setContentType("text");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write("Success");
+	}
+
 
 }

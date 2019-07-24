@@ -20,3 +20,17 @@ $("button.magazine-logout").click(function() {
 	});
 
 });
+
+$(document).ready(function() {
+	$.get("user-role", function(data) {
+		if (data !== '') {
+			userRole = data;
+		}
+	}).done(function() {
+		if (userRole === 'ADMIN') {
+			$('li.user-subscription-option').hide();
+		} else {
+			$('li.create-magazine-option').hide();
+		}
+	});
+});
