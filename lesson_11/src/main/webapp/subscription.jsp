@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>User Account</title>
+<title>Bucket</title>
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
@@ -17,21 +17,23 @@
 	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
 	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 	crossorigin="anonymous">
-	
 </head>
 <body>
-  <jsp:include page="header.jsp"></jsp:include>
-  
-    <div class="container-fluid">
+	<jsp:include page="header.jsp"></jsp:include>
+
+	<div class="container-fluid">
 		<div class="row">
-			<div id="magazineCards"></div>
+					
+				<h1>Subscription</h1>
+				
 		</div>
+
 	</div>
-  
-  
-  
+
+
+
 	<jsp:include page="footer.jsp"></jsp:include>
-  
+
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -45,7 +47,6 @@
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		  <script src="js/header.js"></script>
-		   <script src="js/userAccount.js"></script>
+	<script src="js/header.js"></script>
 </body>
 </html>

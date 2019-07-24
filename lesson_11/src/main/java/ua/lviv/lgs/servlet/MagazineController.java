@@ -51,6 +51,13 @@ public class MagazineController extends HttpServlet {
 		@Override
 		protected void doGet(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
+			
+			String magazineId = request.getParameter("id");
+
+			Magazine magazine = magazineService.read(Integer.parseInt(magazineId));
+
+			request.setAttribute("magazine", magazine);
+			request.getRequestDispatcher("singleMagazine.jsp").forward(request, response);
 
 		}
 

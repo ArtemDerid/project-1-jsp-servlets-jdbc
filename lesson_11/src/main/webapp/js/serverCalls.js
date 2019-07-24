@@ -21,3 +21,16 @@ $("button.createMagazine").click(function() {
 	});
 
 });
+
+$("button.buy-magazine").click(function() {
+	var magazineId = jQuery(this).attr("magazine-id");
+	
+	
+	$.post("subscription", {'magazineId':magazineId},
+			function(data) {
+				if (data == 'Success') {
+					$("[data-dismiss=modal]").trigger({type: "click"});
+					alert('Success');
+				}
+			});
+});
