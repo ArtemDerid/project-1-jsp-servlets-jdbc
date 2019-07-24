@@ -24,7 +24,6 @@ public class UserDaoImpl implements UserDao{
 	private static String DELETE_BY_ID = "delete from user where id=?";
 	
 	private static Logger LOGGER = Logger.getLogger(UserDaoImpl.class);
-	
 	private Connection connection;
 	private PreparedStatement preparedStatement;
 
@@ -162,5 +161,6 @@ public class UserDaoImpl implements UserDao{
 		
 		return listOfUsers;
 	}
+
 
 }
