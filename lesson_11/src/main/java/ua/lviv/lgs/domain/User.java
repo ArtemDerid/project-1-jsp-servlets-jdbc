@@ -4,32 +4,32 @@ public class User {
 
 	private int id;
 	private String email;
-	private String password;
 	private String telephoneNumber;
+	private String password;
 	private String firstName;
 	private String lastName;
 	private String role;
 	private String status;
 
-	public User(int id, String email, String password, String telephoneNumber, String firstName, String lastName,
+	public User(int id, String email, String telephoneNumber, String password, String firstName, String lastName,
 			String role, String status) {
 		super();
 		this.id = id;
 		this.email = email;
-		this.password = password;
 		this.telephoneNumber = telephoneNumber;
+		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.role = role;
 		this.status = status;
 	}
 
-	public User(String email, String password, String telephoneNumber, String firstName, String lastName, String role,
+	public User(String email, String telephoneNumber, String password, String firstName, String lastName, String role,
 			String status) {
 		super();
 		this.email = email;
-		this.password = password;
 		this.telephoneNumber = telephoneNumber;
+		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.role = role;

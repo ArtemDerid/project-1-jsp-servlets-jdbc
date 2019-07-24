@@ -16,7 +16,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 	private static SubscriptionService subscriptionServiceImpl;
 	private SubscriptionDao subscriptionDao;
 
-	public SubscriptionServiceImpl() {
+	private SubscriptionServiceImpl() {
 		try {
 			subscriptionDao = new SubscriptionDaoImpl();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {

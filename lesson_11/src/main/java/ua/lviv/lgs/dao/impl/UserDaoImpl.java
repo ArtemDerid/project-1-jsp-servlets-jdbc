@@ -17,10 +17,10 @@ import ua.lviv.lgs.utils.ConnectionUtil;
 public class UserDaoImpl implements UserDao{
 	
 	private static String READ_ALL = "select * from user";
-	private static String CREATE = "insert into user(email, password, telephone_number, first_name, last_name, role, status) values (?,?,?,?,?,?,?)";
+	private static String CREATE = "insert into user(email, telephone_number, password, first_name, last_name, role, status) values (?,?,?,?,?,?,?)";
 	private static String READ_BY_ID = "select * from user where id =?";
 	private static String READ_BY_EMAIL = "select * from user where email=?";
-	private static String UPDATE_BY_ID = "update user set email=?, password=?, telephone_number=?, first_name=?, last_name=?, role=?, status=? where id = ?";
+	private static String UPDATE_BY_ID = "update user set email=?, telephone_number=?, password=?, first_name=?, last_name=?, role=?, status=? where id = ?";
 	private static String DELETE_BY_ID = "delete from user where id=?";
 	
 	private static Logger LOGGER = Logger.getLogger(UserDaoImpl.class);
@@ -37,8 +37,8 @@ public class UserDaoImpl implements UserDao{
 		try {
 			preparedStatement = connection.prepareStatement(CREATE, Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setString(1, user.getEmail());
-			preparedStatement.setString(2, user.getPassword());
-			preparedStatement.setString(3, user.getTelephoneNumber());
+			preparedStatement.setString(2, user.getTelephoneNumber());
+			preparedStatement.setString(3, user.getPassword());
 			preparedStatement.setString(4, user.getFirstName());
 			preparedStatement.setString(5, user.getLastName());
 			preparedStatement.setString(6, user.getRole());
@@ -66,14 +66,14 @@ public class UserDaoImpl implements UserDao{
 
 			int userId = result.getInt("id");
 			String email = result.getString("email");
-			String password = result.getString("password");
 			String telephoneNumber = result.getString("telephone_number");
+			String password = result.getString("password");
 			String firstName = result.getString("first_name");
 			String lastName = result.getString("last_name");
 			String role = result.getString("role");
 			String status = result.getString("status");
 			
-			user = new User(userId, email, password, telephoneNumber, firstName, lastName, role, status);
+			user = new User(userId, email, telephoneNumber, password, firstName, lastName, role, status);
 
 		} catch (SQLException e) {
 			LOGGER.error(e);
@@ -91,14 +91,14 @@ public class UserDaoImpl implements UserDao{
 			result.next();
 
 			int userId = result.getInt("id");
-			String password = result.getString("password");
 			String telephoneNumber = result.getString("telephone_number");
+			String password = result.getString("password");
 			String firstName = result.getString("first_name");
 			String lastName = result.getString("last_name");
 			String role = result.getString("role");
 			String status = result.getString("status");
 			
-			user = new User(userId, email, password, telephoneNumber, firstName, lastName, role, status);
+			user = new User(userId, email, telephoneNumber, password, firstName, lastName, role, status);
 
 		} catch (SQLException e) {
 			LOGGER.error(e);
@@ -113,8 +113,8 @@ public class UserDaoImpl implements UserDao{
 		try {
 			preparedStatement = connection.prepareStatement(UPDATE_BY_ID);
 			preparedStatement.setString(1, user.getEmail());
-			preparedStatement.setString(2, user.getPassword());
-			preparedStatement.setString(3, user.getTelephoneNumber());
+			preparedStatement.setString(2, user.getTelephoneNumber());
+			preparedStatement.setString(3, user.getPassword());
 			preparedStatement.setString(4, user.getFirstName());
 			preparedStatement.setString(5, user.getLastName());
 			preparedStatement.setString(6, user.getRole());
@@ -147,14 +147,14 @@ public class UserDaoImpl implements UserDao{
 			while (result.next()) {
 				int userId = result.getInt("id");
 				String email = result.getString("email");
-				String password = result.getString("password");
 				String telephoneNumber = result.getString("telephone_number");
+				String password = result.getString("password");
 				String firstName = result.getString("first_name");
 				String lastName = result.getString("last_name");
 				String role = result.getString("role");
 				String status = result.getString("status");
 				
-				listOfUsers.add(new User(userId, email, password, telephoneNumber, firstName, lastName, role, status));
+				listOfUsers.add(new User(userId, email, telephoneNumber, password, firstName, lastName, role, status));
 			}
 		} catch (SQLException e) {
 			LOGGER.error(e);

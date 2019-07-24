@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService{
 	private static UserService userServiceImpl;
 	private UserDao userDao;
 	
-	public UserServiceImpl() {
+	private UserServiceImpl() {
 		try {
 			userDao = new UserDaoImpl();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {

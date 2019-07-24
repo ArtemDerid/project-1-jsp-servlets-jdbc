@@ -16,7 +16,7 @@ public class MagazineServiceImpl implements MagazineService{
 	private static MagazineService magazineSerciceImpl;
 	private MagazineDao magazineDao;
 	
-	public MagazineServiceImpl() {
+	private MagazineServiceImpl() {
 		try {
 			magazineDao = new MagazineDaoImpl();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {

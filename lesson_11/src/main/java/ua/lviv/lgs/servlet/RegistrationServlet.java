@@ -19,19 +19,19 @@ public class RegistrationServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
 		String telephoneNumber = request.getParameter("telephoneNumber");
+		String password = request.getParameter("password");
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		
 
-		if (!email.isEmpty() && !firstName.isEmpty() && !lastName.isEmpty() && !password.isEmpty()) {
-			userService.create(new User(email, password, telephoneNumber, firstName, lastName, UserRole.USER.toString(), UserStatus.REGULAR_USER.toString()));
+		if (!email.isEmpty() && !firstName.isEmpty() && !lastName.isEmpty() && !password.isEmpty() && !telephoneNumber.isEmpty()) {
+			userService.create(new User(email,  telephoneNumber, password, firstName, lastName, UserRole.USER.toString(), UserStatus.REGULAR_USER.toString()));
 		}
 
-		request.setAttribute("userEmail", email);
-		request.setAttribute("userFirstName", firstName);
-		request.getRequestDispatcher("userAccount.jsp").forward(request, response);
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write("Success");
 	}
 
 }
