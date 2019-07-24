@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import ua.lviv.lgs.dao.SubscriptionDao;
 import ua.lviv.lgs.domain.Subscription;
 import ua.lviv.lgs.utils.ConnectionUtil;
@@ -20,6 +22,8 @@ public class SubscriptionDaoImpl implements SubscriptionDao {
 	private static String READ_BY_ID = "select * from subscription where id =?";
 	private static String DELETE_BY_ID = "delete from subscription where id=?";
 
+	private static Logger LOGGER = Logger.getLogger(SubscriptionDaoImpl.class);
+	
 	private Connection connection;
 	private PreparedStatement preparedStatement;
 
@@ -41,7 +45,7 @@ public class SubscriptionDaoImpl implements SubscriptionDao {
 			rs.next();
 			subscription.setId(rs.getInt(1));
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 
 		return subscription;
@@ -64,7 +68,7 @@ public class SubscriptionDaoImpl implements SubscriptionDao {
 			subscription = new Subscription(subscriptionId, userId, magazineCatalogId, releaseDate);
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 
 		return subscription;
@@ -82,7 +86,7 @@ public class SubscriptionDaoImpl implements SubscriptionDao {
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 	}
 
@@ -101,7 +105,7 @@ public class SubscriptionDaoImpl implements SubscriptionDao {
 				listOfSubscription.add(new Subscription(subscriptionId, userId, magazineCatalogId, releaseDate));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 
 		return listOfSubscription;

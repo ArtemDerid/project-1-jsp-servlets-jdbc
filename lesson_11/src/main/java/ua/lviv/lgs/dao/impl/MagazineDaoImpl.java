@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import ua.lviv.lgs.dao.MagazineDao;
 import ua.lviv.lgs.domain.Magazine;
 import ua.lviv.lgs.utils.ConnectionUtil;
@@ -19,6 +21,8 @@ public class MagazineDaoImpl implements MagazineDao{
 	private static String READ_BY_ID = "select * from magazine_catalog where id =?";
 	private static String UPDATE_BY_ID = "update magazine_catalog set name=?, genre=?, description=?, price=?, number_of_pages=? where id = ?";
 	private static String DELETE_BY_ID = "delete from magazine_catalog where id=?";
+	
+	private static Logger LOGGER = Logger.getLogger(MagazineDaoImpl.class);
 	
 	private Connection connection;
 	private PreparedStatement preparedStatement;
@@ -42,7 +46,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			rs.next();
 			magazine.setId(rs.getInt(1));
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 
 		return magazine;
@@ -67,7 +71,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			magazine = new Magazine(magazineId, name, genre, description, price, numberOfPages);
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 
 		return magazine;
@@ -85,7 +89,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement.setInt(6, magazine.getId());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}
 		return magazine;
 	}
@@ -97,7 +101,7 @@ public class MagazineDaoImpl implements MagazineDao{
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			LOGGER.error(e);
 		}		
 	}
 
@@ -118,10 +122,10 @@ public class MagazineDaoImpl implements MagazineDao{
 				listOfMagazines.add(new Magazine(magazineId, name, genre, description, price, numberOfPages));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			
 		}
 		
 		return listOfMagazines;
 	}
-
+	
 }

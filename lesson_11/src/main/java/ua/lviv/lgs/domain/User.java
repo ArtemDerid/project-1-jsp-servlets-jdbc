@@ -1,20 +1,22 @@
 package ua.lviv.lgs.domain;
 
 public class User {
-	
+
 	private int id;
 	private String email;
+	private String password;
 	private String telephoneNumber;
 	private String firstName;
 	private String lastName;
 	private String role;
 	private String status;
-	
-	public User(int id, String email, String telephoneNumber, String firstName, String lastName, String role,
-			String status) {
+
+	public User(int id, String email, String password, String telephoneNumber, String firstName, String lastName,
+			String role, String status) {
 		super();
 		this.id = id;
 		this.email = email;
+		this.password = password;
 		this.telephoneNumber = telephoneNumber;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -22,9 +24,11 @@ public class User {
 		this.status = status;
 	}
 
-	public User(String email, String telephoneNumber, String firstName, String lastName, String role, String status) {
+	public User(String email, String password, String telephoneNumber, String firstName, String lastName, String role,
+			String status) {
 		super();
 		this.email = email;
+		this.password = password;
 		this.telephoneNumber = telephoneNumber;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -46,6 +50,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getTelephoneNumber() {
@@ -96,6 +108,7 @@ public class User {
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((telephoneNumber == null) ? 0 : telephoneNumber.hashCode());
@@ -128,6 +141,11 @@ public class User {
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
 		if (role == null) {
 			if (other.role != null)
 				return false;
@@ -148,8 +166,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", telephoneNumber=" + telephoneNumber + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", role=" + role + ", status=" + status + "]";
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", telephoneNumber=" + telephoneNumber
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", role=" + role + ", status=" + status + "]";
 	}
 
 }
